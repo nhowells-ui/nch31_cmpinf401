@@ -1,7 +1,5 @@
 package nch31_MenuManager;
 
-import java.util.*;
-
 /**
  * Class MenuTester
  * @author Noah Howells
@@ -14,8 +12,13 @@ public class MenuTester {
 	public static void main(String[] args) {
 		
 		MenuManager m = new MenuManager("data/dishes.txt");
-		m.randomMenu("Menu 1");
+		Menu rm = m.randomMenu("Menu 1");
 		
-	
+		System.out.println(rm.getEntree().getDescription());
+		System.out.println(rm.getSide().getDescription());
+		System.out.println(rm.getSalad().getDescription());
+		System.out.println(rm.getDessert().getDescription());
+		
+		
 	}
 }

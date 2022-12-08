@@ -1,8 +1,5 @@
 package nch31_MenuManager;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -28,8 +25,11 @@ public class MenuManager {
 		desserts = new ArrayList<Dessert>();
 		
 		for(int i = 0; i < menus.size(); i++) {
+			
 			MenuItem item = menus.get(i);
-			if(item.getType().equals("entree")) {
+			// System.out.println(item.getDescription());
+			
+			if(item instanceof Entree) {
 				entrees.add((Entree)item);
 			}
 			else if(item instanceof Side) {
@@ -41,23 +41,17 @@ public class MenuManager {
 			else if(item instanceof Dessert) {
 				desserts.add((Dessert)item);
 			}
-			else {
-				System.out.println("hI");
-			}
 		}
+		
 	}
 	
 	public Menu randomMenu(String name) {
-		Menu m = new Menu(null, null, null, null, null);				
+		Menu m;			
 		Random r = new Random();
-		System.out.println(entrees.size());
-		int t = r.nextInt(entrees.size());
-		System.out.println(t);
-		m.setName(name);
-		m.setEntree(entrees.get(r.nextInt(entrees.size())));
-		m.setSide(sides.get(r.nextInt(sides.size())));
-		m.setSalad(salads.get(r.nextInt(salads.size())));
-		m.setDessert(desserts.get(r.nextInt(desserts.size())));
+		
+		int index = r.nextInt(entrees.size());
+		
+		m = new Menu(name, entrees.get(index), sides.get(index), salads.get(index), desserts.get(index));	
 		
 		return m;
 

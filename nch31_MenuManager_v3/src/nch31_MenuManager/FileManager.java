@@ -36,11 +36,26 @@ public class FileManager {
 				String name = data[0];
 				String type = data[1];
 				String description = data[2];
-				String calories = data[3];
-				String price = data[4];				
+				int calories = Integer.parseInt(data[3]);
+				double price = Double.parseDouble(data[4]);				
 				
-				MenuItem mI = new MenuItem(name, type, description, Integer.parseInt(calories), Double.parseDouble(price));
-				menuList.add(mI);
+				if(type.equalsIgnoreCase("entree"))
+				{
+					menuList.add(new Entree(name, type, description, calories, price));
+				}
+				else if(type.equalsIgnoreCase("side"))
+				{
+					menuList.add(new Side(name, type, description, calories, price));
+				}
+				else if(type.equalsIgnoreCase("salad"))
+				{
+					menuList.add(new Salad(name, type, description, calories, price));
+				}
+				else if(type.equalsIgnoreCase("dessert"))
+				{
+					menuList.add(new Dessert(name, type, description, calories, price));
+				}
+		
 			}
 			fr.close();
 			br.close();
